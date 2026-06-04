@@ -6,12 +6,16 @@
   scroll-behavior: smooth;
   font-family: "Poppins";
 }
+
 :root {
   --bg-color: #080808;
   --second-bg-color: #101010;
   --text-color: white;
-  --main-color: #ea580c;
+  --main-color: #A5B4FC;
+  --gradient-color: #60A5FA;
+  --second-gradient-color: #A78BFA;
 }
+
 html {
   font-size: 60%;
   overflow-x: hidden;
@@ -20,8 +24,11 @@ html {
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  width: 100%;
+  overflow-x: hidden;
 }
 
+/* header */
 .header {
   position: fixed;
   width: 100%;
@@ -57,13 +64,14 @@ body {
 span {
   background: linear-gradient(
     270deg,
-    #DF8909 10%,
-    #FF1D15 100%
+    var(--gradient-color),
+    var(--second-gradient-color)
   );
   background-clip: text;
   color: transparent;
 }
 
+/* Navbar */
 .navbar a {
   font-size: 1.8rem;
   color: var(--text-color);
@@ -84,8 +92,8 @@ span {
   border-radius: 3rem;
   background: linear-gradient(
     270deg,
-    #DF8909 10%,
-    #FF1D15 100%
+    var(--gradient-color),
+    var(--second-gradient-color)
   );
   letter-spacing: 1px;
   cursor: pointer;
@@ -104,11 +112,13 @@ section {
   padding: 10rem 15%;
 }
 
+/* Home */
 .home {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15rem;
+
 }
 
 .home-content {
@@ -168,7 +178,7 @@ section {
   background: var(--main-color);
   color: var(--text-color);
   transform: scale(1.1)translateY(-5px);
-  box-shadow: 0 0 2cap var(--main-color),
+  box-shadow: 0 0 2rem var(--main-color),
 }
 
 .btn-group {
@@ -202,12 +212,14 @@ section {
   box-shadow: 0 0 25px var(--main-color);
 }
 
-btn-group a:nth-of-type(2):hover {
+.btn-group a:nth-of-type(2):hover {
   background-color: var(--main-color);
   color: black;
   box-shadow: 0 0 25px var(--main-color),
 }
 
+
+/* About */
 .about {
   display: flex;
   justify-content: center;
@@ -262,6 +274,8 @@ btn-group a:nth-of-type(2):hover {
   margin: 5rem 0;
 }
 
+
+/* Services */
 .services {
   background-color: var(--bg-color);
   color: black
@@ -322,6 +336,8 @@ btn-group a:nth-of-type(2):hover {
   font-size: 8rem;
 }
 
+
+/* Projects */
 .projects {
   background-color: var(--second-bg-color);
 }
@@ -371,6 +387,8 @@ btn-group a:nth-of-type(2):hover {
   font-size: 1.6rem;
 }
 
+
+/* Contact */
 .contact {
   background-color: var(--bg-color);
 }
@@ -381,17 +399,24 @@ btn-group a:nth-of-type(2):hover {
 }
 
 .contact form {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+
+.contact form .input-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 3rem;
-  margin: 5rem 0;
+  width: 100%;
 }
 
 .contact form .input-box input,
 .contact form textarea {
   width: 100%;
+  min-width: 0;
   padding: 2.5rem;
   font-size: 1.8rem;
   color: var(--text-color);
@@ -402,6 +427,14 @@ btn-group a:nth-of-type(2):hover {
   resize: none;
 }
 
+.contact form .btn {
+  display: block;
+  margin: 1rem auto 0;
+  cursor: pointer;
+}
+
+
+/* Footer */
 .footer {
   background-color: var(--second-bg-color);
   padding: 50px 0;
@@ -438,7 +471,7 @@ btn-group a:nth-of-type(2):hover {
   font-size: 1.4rem;
 }
 
-
+/* Responsive */
 @media(max-width:1285px) {
 
   #menu-icon {
@@ -483,6 +516,7 @@ btn-group a:nth-of-type(2):hover {
   .home {
     flex-direction: column-reverse;
     gap: 5rem;
+    margin-top: 3rem;
   }
   
   .home-content {
@@ -508,7 +542,51 @@ btn-group a:nth-of-type(2):hover {
     width: 52vw;
   }
 
+
   .contact form {
     flex-direction: column;
+  }
+}
+
+
+@media (max-width: 450px) {
+  /* Reduce the large side padding so content has room to fit */
+  section {
+    padding: 8rem 10%;
+  }
+
+
+
+  /* Allow the grid column to shrink below 350px on small screens */
+  .projects-box {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* Ensure the image inside the card scales down responsibly */
+  .project-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 1. Force the form container to fill mobile viewport boundaries */
+  .contact form {
+    width: 100%;
+  }
+
+  /* 2. Shrink internal padding and text size so inputs don't explode horizontally */
+  .contact form .input-box input,
+  .contact form textarea {
+    padding: 1.5rem;
+    font-size: 1.6rem; 
+    margin: 1rem 0;   
+  }
+
+
+}
+
+@media (max-height: 1120px) {
+
+  .home {
+    padding-top: 12rem;
   }
 }
