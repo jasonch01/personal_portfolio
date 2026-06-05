@@ -578,7 +578,7 @@ section {
   }
 
   .home-img img {
-    width: 28w;
+    width: 28vw;
   }
 
   .about {
@@ -608,7 +608,13 @@ section {
     padding: 8rem 10%;
   }
 
+  .home-img img {
+    width: 56vw;
+  }
 
+  .about img {
+    width: 56vw;
+  }
 
   /* Allow the grid column to shrink below 350px on small screens */
   .projects-box {
