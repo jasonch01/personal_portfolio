@@ -513,10 +513,6 @@ section {
     opacity: 0; 
   }
 
-  .navbar a:last-child {
-    border-bottom: none;
-  }
-
   .navbar a:hover {
     background-color: var(--main-color);
     color: black;
@@ -544,7 +540,7 @@ section {
   @keyframes dropDown {
     0% {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-10px);
     }
     100% {
       opacity: 1;
@@ -556,7 +552,7 @@ section {
   @keyframes fadeInUp {
     0% {
       opacity: 0;
-      transform: translateX(15px); /* Slides slightly from the right side */
+      transform: translateX(-10px); /* Slides slightly from the right side */
     }
     100% {
       opacity: 1;
@@ -582,7 +578,7 @@ section {
   }
 
   .home-img img {
-    width: 56vw;
+    width: 28w;
   }
 
   .about {
@@ -596,7 +592,7 @@ section {
   }
 
   .about img {
-    width: 52vw;
+    width: 28vw;
   }
 
 
