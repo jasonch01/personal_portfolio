@@ -287,7 +287,7 @@ section {
 
 .services-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
   gap: 2.5rem;
 }
@@ -297,7 +297,7 @@ section {
   justify-content: center;
   align-items: center;
   background-color: var(--main-color);
-  height: 600px;
+  height: 500px;
   border-radius: 3rem;
   cursor: pointer;
   border: 5px solid transparent;
@@ -494,9 +494,9 @@ section {
     top: 100%;
     right: 0;
     width: 50%;
-    padding: 1rem 3rem;
     background: rgba(0, 0, 0, 0.8);
-    border-bottom-left-radius: 2rem;
+    border-bottom-left-radius: 1rem;
+    border-top: 2px solid var(--main-color);
     border-left: 2px solid var(--main-color);
     border-bottom: 2px solid var(--main-color);
     display: none;
@@ -505,20 +505,66 @@ section {
   .navbar a {
     display: block;
     font-size: 2rem;
-    margin: 3rem 0;
-    color: var(--text-color);
+    padding: 1rem 0;
+    text-align: center;
+    width: 100%;
+    margin-left: 0;
+    /* Force links to stay invisible until their specific delay timer starts */
+    opacity: 0; 
   }
 
-  .navbar a {
-    display: block;
-    font-size: 2rem;
-    margin: 3rem 0;
-    color: var(--text-color);
+  .navbar a:last-child {
+    border-bottom: none;
+  }
+
+  .navbar a:hover {
+    background-color: var(--main-color);
+    color: black;
   }
 
   .navbar.active {
     display: block;
+    animation: dropDown 0.4s ease-out forwards;
   }
+ 
+
+  /* Trigger the link fade-in only when the navbar is active */
+  .navbar.active a {
+    animation: fadeInUp 0.4s ease-out forwards;
+  }
+
+  /* Stagger each link by targeting them in numerical order */
+  .navbar.active a:nth-child(1) { animation-delay: 0.15s; }
+  .navbar.active a:nth-child(2) { animation-delay: 0.25s; }
+  .navbar.active a:nth-child(3) { animation-delay: 0.35s; }
+  .navbar.active a:nth-child(4) { animation-delay: 0.45s; }
+  .navbar.active a:nth-child(5) { animation-delay: 0.55s; }
+
+  /* KEYFRAMES */
+  @keyframes dropDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* New text animation timeline */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateX(15px); /* Slides slightly from the right side */
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);    /* Settles cleanly into place */
+    }
+  }
+
+
 
   .gradient-btn {
     display: none;
@@ -557,8 +603,8 @@ section {
   .contact form {
     flex-direction: column;
   }
-}
 
+}
 
 @media (max-width: 450px) {
   /* Reduce the large side padding so content has room to fit */
