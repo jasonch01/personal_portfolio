@@ -486,20 +486,30 @@ section {
 @media(max-width:1285px) {
 
   #menu-icon {
-    display: block;
+    display: block !important;
+    position: fixed;   /* Pins it securely relative to the window frame */
+    top: 4rem;         /* Coordinates match your desktop header height */
+    right: 15%;        /* Alignment lane matches your desktop header text padding */
+    cursor: pointer;
+    font-size: 3.5rem; 
+    z-index: 1005;
+    transition: right 0.4s ease-out, top 0.4s ease-out;
   }
 
   .navbar {
     position: absolute;
-    top: 100%;
+    top: 0%;
     right: 0;
     width: 50%;
+    height: 100vh; 
     background: rgba(0, 0, 0, 0.8);
     border-bottom-left-radius: 1rem;
     border-top: 2px solid var(--main-color);
     border-left: 2px solid var(--main-color);
     border-bottom: 2px solid var(--main-color);
     display: none;
+    padding-top: 12rem; 
+    z-index: 1001;
   }
 
   .navbar a {
@@ -521,6 +531,11 @@ section {
   .navbar.active {
     display: block;
     animation: dropDown 0.4s ease-out forwards;
+  }
+
+   .navbar.active ~ #menu-icon {
+    right: 2.5rem; /* 💡 Moves it right next to the screen edge inside your 50% menu width */
+    top: 3rem;     /* Nudges it up slightly to look balanced in the corner */
   }
  
 
@@ -609,11 +624,11 @@ section {
   }
 
   .home-img img {
-    width: 56vw;
+    width: 48vw;
   }
 
   .about img {
-    width: 56vw;
+    width: 48vw;
   }
 
   /* Allow the grid column to shrink below 350px on small screens */
