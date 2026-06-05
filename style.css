@@ -535,7 +535,6 @@ section {
 
    .navbar.active ~ #menu-icon {
     right: 2.5rem; /* 💡 Moves it right next to the screen edge inside your 50% menu width */
-    top: 3rem;     /* Nudges it up slightly to look balanced in the corner */
   }
  
 
